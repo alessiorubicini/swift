@@ -47,44 +47,44 @@ Swift **5.1** was officially released in September 2019. Swift 5.1 builds on the
     str = [str stringByAppendingString:@" world"];
     ```
 
-In Swift, many of basic types have been promoted to the language's core, and can be manipulated directly. For instance, strings are invisibly bridged to NSString (when Foundation is imported) and can now be concatenated with the + operator, allowing greatly simplified syntax:
+    In Swift, many of basic types have been promoted to the language's core, and can be manipulated directly. For instance, strings are invisibly bridged to NSString (when Foundation is imported) and can now be concatenated with the + operator, allowing greatly simplified syntax:
 
-    ```
-    var str = "hello,"
-    str += " world"
-    ```
+        ```
+        var str = "hello,"
+        str += " world"
+        ```
 
 - **Access control**: Swift supports five access control levels for symbols: open, public, internal, fileprivate, and private. Unlike many object-oriented languages, these access controls ignore inheritance hierarchies: private indicates that a symbol is accessible only in the immediate scope, fileprivate indicates it is accessible only from within the file, internal indicates it is accessible within the containing module, public indicates it is accessible from any module, and open (only for classes and their methods) indicates that the class may be subclassed outside of the module.
 
 - **Optionals and chaining**: An important new feature in Swift is option types, which allow references or values to operate in a manner similar to the common pattern in C, where a pointer may refer to a value or may be null. This implies that non-optional types cannot result in a null-pointer error; the compiler can ensure this is not possible.
 
-Optional types are created with the Optional mechanism—to make an Integer that is nullable, one would use a declaration similar to var optionalInteger: Optional<Int>. As in C#, Swift also includes syntactic sugar for this, allowing one to indicate a variable is optional by placing a question mark after the type name, var optionalInteger: Int?.
-Variables or constants that are marked optional either have a value of the underlying type or are nil. Optional types wrap the base type, resulting in a different instance. String and String? are fundamentally different types, the latter has more in common with Int? than String.
+    Optional types are created with the Optional mechanism—to make an Integer that is nullable, one would use a declaration similar to var optionalInteger: Optional<Int>. As in C#, Swift also includes syntactic sugar for this, allowing one to indicate a variable is optional by placing a question mark after the type name, var optionalInteger: Int?.
+    Variables or constants that are marked optional either have a value of the underlying type or are nil. Optional types wrap the base type, resulting in a different instance. String and String? are fundamentally different types, the latter has more in common with Int? than String.
 
-To access the value inside, assuming it is not nil, it must be unwrapped to expose the instance inside. This is performed with the ! operator:
+    To access the value inside, assuming it is not nil, it must be unwrapped to expose the instance inside. This is performed with the ! operator:
 
-    ```
-    let myValue = anOptionalInstance!.someMethod()
-    ```
+        ```
+        let myValue = anOptionalInstance!.someMethod()
+        ```
 
-In this case, the ! operator unwraps anOptionalInstance to expose the instance inside, allowing the method call to be made on it. If anOptionalInstance is nil, a null-pointer error occurs. This can be annoying in practice, so Swift also includes the concept of optional chaining to test whether the instance is nil and then unwrap it if it is non-null:
+    In this case, the ! operator unwraps anOptionalInstance to expose the instance inside, allowing the method call to be made on it. If anOptionalInstance is nil, a null-pointer error occurs. This can be annoying in practice, so Swift also includes the concept of optional chaining to test whether the instance is nil and then unwrap it if it is non-null:
 
-    ```
-    let myValue = anOptionalInstance?.someMethod()
-    ```
+        ```
+        let myValue = anOptionalInstance?.someMethod()
+        ```
 
-In this case the runtime only calls someMethod if anOptionalInstance is not nil, suppressing the error. Normally this requires the programmer to test whether myValue is nil before proceeding. The origin of the term chaining comes from the more common case where several method calls/getters are chained together. For instance:
+    In this case the runtime only calls someMethod if anOptionalInstance is not nil, suppressing the error. Normally this requires the programmer to test whether myValue is nil before proceeding. The origin of the term chaining comes from the more common case where several method calls/getters are chained together. For instance:
 
-Swift 2 introduced the new keyword **guard** for cases in which code should stop executing if some condition is unmet:
+    Swift 2 introduced the new keyword **guard** for cases in which code should stop executing if some condition is unmet:
 
-    ```
-    guard let leaseStart = aBuilding.TenantList[5]?.leaseDetails?.startDate else
-    {
-        //handle the error case where anything in the chain is nil
-        //else scope must exit the current method or loop
-    }
-    //continue, knowing that leaseStart is not nil
-    ```
+        ```
+        guard let leaseStart = aBuilding.TenantList[5]?.leaseDetails?.startDate else
+        {
+            //handle the error case where anything in the chain is nil
+            //else scope must exit the current method or loop
+        }
+        //continue, knowing that leaseStart is not nil
+        ```
 
 - **Value types**
 
