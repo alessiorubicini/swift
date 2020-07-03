@@ -28,7 +28,7 @@ Swift **5.1** was officially released in September 2019. Swift 5.1 builds on the
 ### Features
 
 - **Closure support**: Swift supports closures (known as lambdas in other languages). Here is an example:
-    ```
+    ```swift
     // Here is a closure
     (arg1: Int, arg2: Int) -> Int in
         return arg1 + arg2
@@ -42,14 +42,14 @@ Swift **5.1** was officially released in September 2019. Swift 5.1 builds on the
     ```
 
 - **String support**: Under the Cocoa and Cocoa Touch environments, many common classes were part of the Foundation Kit library. This included the NSString string library (using Unicode), the NSArray and NSDictionary collection classes, and others. Objective-C provided various bits of syntactic sugar to allow some of these objects to be created on-the-fly within the language, but once created, the objects were manipulated with object calls. For instance, in Objective-C concatenating two NSStrings required method calls similar to this:
-    ```
+    ```swift
     NSString *str = @"hello,";
     str = [str stringByAppendingString:@" world"];
     ```
 
     In Swift, many of basic types have been promoted to the language's core, and can be manipulated directly. For instance, strings are invisibly bridged to NSString (when Foundation is imported) and can now be concatenated with the + operator, allowing greatly simplified syntax:
 
-        ```
+        ```swift
         var str = "hello,"
         str += " world"
         ```
@@ -63,13 +63,13 @@ Swift **5.1** was officially released in September 2019. Swift 5.1 builds on the
 
     To access the value inside, assuming it is not nil, it must be unwrapped to expose the instance inside. This is performed with the ! operator:
 
-        ```
+        ```swift
         let myValue = anOptionalInstance!.someMethod()
         ```
 
     In this case, the ! operator unwraps anOptionalInstance to expose the instance inside, allowing the method call to be made on it. If anOptionalInstance is nil, a null-pointer error occurs. This can be annoying in practice, so Swift also includes the concept of optional chaining to test whether the instance is nil and then unwrap it if it is non-null:
 
-        ```
+        ```swift
         let myValue = anOptionalInstance?.someMethod()
         ```
 
@@ -77,7 +77,7 @@ Swift **5.1** was officially released in September 2019. Swift 5.1 builds on the
 
     Swift 2 introduced the new keyword **guard** for cases in which code should stop executing if some condition is unmet:
 
-        ```
+        ```swift
         guard let leaseStart = aBuilding.TenantList[5]?.leaseDetails?.startDate else
         {
             //handle the error case where anything in the chain is nil
