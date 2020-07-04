@@ -49,10 +49,10 @@ Swift **5.1** was officially released in September 2019. Swift 5.1 builds on the
 
     In Swift, many of basic types have been promoted to the language's core, and can be manipulated directly. For instance, strings are invisibly bridged to NSString (when Foundation is imported) and can now be concatenated with the + operator, allowing greatly simplified syntax:
 
-        ```swift
-        var str = "hello,"
-        str += " world"
-        ```
+    ```swift
+    var str = "hello,"
+    str += " world"
+    ```
 
 - **Access control**: Swift supports five access control levels for symbols: open, public, internal, fileprivate, and private. Unlike many object-oriented languages, these access controls ignore inheritance hierarchies: private indicates that a symbol is accessible only in the immediate scope, fileprivate indicates it is accessible only from within the file, internal indicates it is accessible within the containing module, public indicates it is accessible from any module, and open (only for classes and their methods) indicates that the class may be subclassed outside of the module.
 
@@ -63,28 +63,27 @@ Swift **5.1** was officially released in September 2019. Swift 5.1 builds on the
 
     To access the value inside, assuming it is not nil, it must be unwrapped to expose the instance inside. This is performed with the ! operator:
 
-        ```swift
-        let myValue = anOptionalInstance!.someMethod()
-        ```
+    ```swift
+    let myValue = anOptionalInstance!.someMethod()
+    ```
 
     In this case, the ! operator unwraps anOptionalInstance to expose the instance inside, allowing the method call to be made on it. If anOptionalInstance is nil, a null-pointer error occurs. This can be annoying in practice, so Swift also includes the concept of optional chaining to test whether the instance is nil and then unwrap it if it is non-null:
 
-        ```swift
-        let myValue = anOptionalInstance?.someMethod()
-        ```
+    ```swift
+    let myValue = anOptionalInstance?.someMethod()
+    ```
 
     In this case the runtime only calls someMethod if anOptionalInstance is not nil, suppressing the error. Normally this requires the programmer to test whether myValue is nil before proceeding. The origin of the term chaining comes from the more common case where several method calls/getters are chained together. For instance:
 
     Swift 2 introduced the new keyword **guard** for cases in which code should stop executing if some condition is unmet:
 
-        ```swift
-        guard let leaseStart = aBuilding.TenantList[5]?.leaseDetails?.startDate else
-        {
-            //handle the error case where anything in the chain is nil
-            //else scope must exit the current method or loop
-        }
-        //continue, knowing that leaseStart is not nil
-        ```
+    ```swift
+    guard let leaseStart = aBuilding.TenantList[5]?.leaseDetails?.startDate else {
+        //handle the error case where anything in the chain is nil
+        //else scope must exit the current method or loop
+    }
+    //continue, knowing that leaseStart is not nil
+    ```
 
 - **Value types**
 
