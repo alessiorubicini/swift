@@ -62,7 +62,7 @@ class Person {
 }
 
 // Inheritance
-class Worker {
+class Worker: Person {
 
     private var role: String
     private var workingShift: String
